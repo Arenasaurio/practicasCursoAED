@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1693754224 source:c:\users\lalo\documents\algoritmosyestructuras\pruebatda\tda0309\letritas\letrotas.c
+	<ctype.h>
+	<string.h>
+	"letras.h"
+
+1693802976 source:c:\users\lalo\documents\algoritmosyestructuras\pruebatda\tda0309\letritas\main.c
+	<stdio.h>
+	"letras.h"
+
+1693753404 c:\users\lalo\documents\algoritmosyestructuras\pruebatda\tda0309\letritas\letras.h
+
