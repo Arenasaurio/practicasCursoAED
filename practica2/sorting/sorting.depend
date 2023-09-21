@@ -1,13 +1,14 @@
 # depslib dependency file v1.0
-1695062269 source:c:\users\lalo\documents\practicasaed\practica2\sorting\orden.c
+1695132802 source:c:\users\lalo\documents\practicasaed\practica2\sorting\orden.c
 	"orden.h"
 	<stdio.h>
 	<stdlib.h>
 
 1695062269 c:\users\lalo\documents\practicasaed\practica2\sorting\orden.h
 
-1695062269 source:c:\users\lalo\documents\practicasaed\practica2\sorting\main.c
+1695131294 source:c:\users\lalo\documents\practicasaed\practica2\sorting\main.c
 	<stdio.h>
 	<time.h>
+	<stdlib.h>
 	"orden.h"
 

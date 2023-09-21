@@ -1,13 +1,11 @@
-//
-// Created by 52552 on 18/09/2023.
-//
-#include "orden.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include "orden.h"
 
-#define MIN_MERGE 32
+#define MIN_MERGE 32//CONSTANTE OCUPADA POR TIMSORT
 
-void intercambiar(int *a, int *b) {
+void intercambiar(int *a, int *b) {//FUNCION QUE OCUPAN LOS ALGORITMOS QUE IMPLEMENTAN UN VALOR SWAP
     int temporal = *a;
     *a = *b;
     *b = temporal;
@@ -118,7 +116,7 @@ void bucketSort(int arreglo[], int longitud) {
     free(buckets);
 }
 
-// TIMSORT
+//FUNCIONES DEL ALGORITMO TIMSORT
 int comparar(const void *a, const void *b) {
     return (*(int*)a - *(int*)b);
 }
@@ -164,7 +162,6 @@ void merge(int arreglo[], int l, int m, int r) {
     }
 }
 
-// Función de ordenamiento por Timsort
 void timsort(int arreglo[], int longitud) {
     if (longitud <= 0) return;
 
@@ -185,43 +182,31 @@ void timsort(int arreglo[], int longitud) {
             }
         }
     }
-}
+}//FIN TIMSORT
 
-// Función de partición para el algoritmo Quick Sort
-int particion(int arreglo[], int low, int high) {
-    int pivot = arreglo[high]; // Tomamos el último elemento como pivote
-    int i = (low - 1); // El índice del elemento más pequeño
 
-    for (int j = low; j <= high - 1; j++) {
-        // Si el elemento actual es menor o igual al pivote
-        if (arreglo[j] <= pivot) {
-            i++; // Incrementamos el índice del elemento más pequeño
-            // Intercambiamos arr[i] y arr[j]
-            int temp = arreglo[i];
-            arreglo[i] = arreglo[j];
-            arreglo[j] = temp;
+//FUNCIONES DE QUICKSORT
+int particion(int arreglo[], int inicio, int fin) {
+    int pivote = arreglo[fin];
+    int i = (inicio - 1);
+
+    for (int j = inicio; j <= fin - 1; j++) {
+        if (arreglo[j] < pivote) {
+            i++;
+            intercambiar(&arreglo[i], &arreglo[j]);
         }
     }
-
-    // Intercambiamos arr[i+1] y arr[high] (el pivote)
-    int temp = arreglo[i + 1];
-    arreglo[i + 1] = arreglo[high];
-    arreglo[high] = temp;
-
+    intercambiar(&arreglo[i + 1], &arreglo[fin]);
     return (i + 1);
 }
 
-// Función recursiva para el algoritmo Quick Sort
-void quickSort(int arreglo[], int low, int high) {
-    if (low < high) {
-        // Encontramos el índice del elemento pivote
-        int pi = particion(arreglo, low, high);
-
-        // Ordenamos los elementos antes y después de la partición
-        quickSort(arreglo, low, pi - 1);
-        quickSort(arreglo, pi + 1, high);
+void quicksort(int arreglo[], int inicio, int fin) {
+    if (inicio < fin) {
+        int indiceParticion = particion(arreglo, inicio, fin);
+        quicksort(arreglo, inicio, indiceParticion - 1);
+        quicksort(arreglo, indiceParticion + 1, fin);
     }
-}
+}//FIN QUICKSORT
 
 void gnomeSort(int arreglo[], int longitud) {
     int index = 0;
@@ -241,4 +226,3 @@ void gnomeSort(int arreglo[], int longitud) {
         }
     }
 }
-
