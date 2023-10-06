@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1696566523 source:c:\users\lalo\documents\practicasaed\practica3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
