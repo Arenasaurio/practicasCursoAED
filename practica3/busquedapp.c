@@ -34,23 +34,29 @@ void burbujaS(int A[],int n){
             }
 }
 
-int binSearch(int A[],int inicio,int fin,int vB){
+struct resultados binSearch(int A[],int inicio,int fin,int vB){
+    struct resultados binaria;
+    binaria.comparaciones=0;
     while(inicio<=fin)
     {
-               int mid=inicio+(fin-inicio)/2;//int mid=(inicio+fin)/2;
-        if(A[mid]==vB) //si el valor es mid
-            return mid;
+        int mid=inicio+(fin-inicio)/2;//int mid=(inicio+fin)/2;
+        binaria.comparaciones++;
+        if(A[mid]==vB){binaria.indice=mid;//si el valor es mid
+            return binaria;}
         else if(vB>A[mid]) //buscar del lado derecho
             inicio=mid+1;
         else
             fin=mid-1;
     }
-    return -1;
+    binaria.indice=-1;
+    return binaria;
 }
 
 
-int indSearch(int A[],int n, int vB)
+struct resultados indSearch(int A[],int n, int vB)
 {
+    struct resultados indexada;
+    indexada.comparaciones=0;
     int indices[n],elementos[n],i,set=0;
     int inicio, fin,ind=0;   // inicio y fin de rango de busqueda, ind es indices deindices y elementos
 
@@ -64,7 +70,9 @@ int indSearch(int A[],int n, int vB)
     //verificar si el valor buscado
     //esta dentro del arreglo
     if(vB<A[0] || vB>A[n-1])
-        return -1;
+        {indexada.comparaciones++;
+        indexada.indice=-1;
+        return indexada;}
     else
     {
         for(i=1;i<=ind;i++)
@@ -86,28 +94,38 @@ int indSearch(int A[],int n, int vB)
 
     for(i=inicio;i<fin;i++)
     {
-        if(vB==A[i])
-            return i;
+        indexada.comparaciones++;
+        if(vB==A[i]){
+            indexada.indice=i;
+            return indexada;
+        }
     }
 
-    return -1;
+    indexada.indice=-1;
+    return indexada;
 }
 
-int intSearch(int A[],int inicio,int fin,int vB)
+struct resultados intSearch(int A[],int inicio,int fin,int vB)
 {
+    struct resultados interpolar;
+    interpolar.comparaciones=0;
     int pos; //posici�n aproximada del valor
     while(inicio<=fin && vB>=A[inicio] && vB<=A[fin])
     {
         pos=inicio+((vB-A[inicio])*(fin-inicio)/(A[fin]-A[inicio]));
-        if(vB==A[pos])
-            return pos;
+        interpolar.comparaciones++;
+        if(vB==A[pos]){
+            interpolar.indice=pos;
+            return interpolar;
+        }
         else if (vB<A[pos])
             fin=pos-1;
         else
             inicio=pos+1;
 
     }
-    return -1;
+    interpolar.indice=-1;
+    return interpolar;
 }
 
 

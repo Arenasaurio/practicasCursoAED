@@ -23,40 +23,31 @@ int main(void){
     burbujaS(arr,n); //Ordenamiento con burbuja
     printf("\n");
 
-    printf("Arreglo ordenado: ");
+    printf("VECTOR ORDENADO: ");
     for(int i=0;i<n;i++) //Inicia el bucle buscando el numero declarado en "numbus"
         printf("%d ",arr[i]); //Imprime el arreglo ordenado
-
+    printf("\n\n");
 
     //BUSQUEDA BINARIA
+    struct resultados indice1;
     clock_t inicioBinariaS = clock();
-    int indice1 = binSearch(arr,0,n-1,numbus);
+    indice1 = binSearch(arr,0,n-1,numbus);
     clock_t finBinariaS = clock();
     double tiempoBBinaria = (double)(finBinariaS - inicioBinariaS) / CLOCKS_PER_SEC;
-    if(indice1!=-1)
-        printf("\nEl valor %d, con  Busqueda Interpolada esta en: %d",numbus, indice1);
-    else
-        printf("\nEl valor %d, con Busqueda Interpolada no se encuentra en la lista", numbus);
 
     //BUSQUEDA INDEXADA
+    struct resultados indice2;
     clock_t inicioIndexadaS = clock();
-    int indice2 = indSearch(arr,n,numbus);
+    indice2 = indSearch(arr,n,numbus);
     clock_t finIndexadaS = clock();
     double tiempoBIndexada = (double)(finIndexadaS - inicioIndexadaS) / CLOCKS_PER_SEC;
-    if(indice2!=-1)
-        printf("\nEl valor %d, con Busqueda Indexada esta en: %d",numbus, indice2);
-    else
-        printf("\nEl valor %d, con Busqueda Indexada no esta en la lista", numbus);
 
     //BUSQUEDA INTERPOLADA
+    struct resultados indice3;
     clock_t inicioInterpolarS = clock();
-    int indice3 = intSearch(arr,0,n-1,numbus);
+    indice3 = intSearch(arr,0,n-1,numbus);
     clock_t finInterpolarS = clock();
     double tiempoBInterpolar = (double)(finInterpolarS - inicioInterpolarS) / CLOCKS_PER_SEC;
-    if(indice3!=-1)
-        printf("\nEl valor %d, con Busqueda Interpolada esta en: %d",numbus, indice3);
-    else
-        printf("\nEl valor %d, con Busqueda Interpolada no se encuentra en la lista",numbus);
 
     //BUSQUEDA LINEAR
     struct resultados indice4;
@@ -64,7 +55,15 @@ int main(void){
     indice4 = lSearch(arr,n,numbus);
     clock_t finLinearS = clock();
     double tiempoBLinear = (double)(finLinearS - inicioLinearS) / CLOCKS_PER_SEC;
-    printf("Comparaciones: %d\nIndice: %d", indice4.comparaciones, indice4.indice);
+
+    printf("------------------------------------------------------------------------\n");
+    printf("ALGORITMO: BUSQUEDA LINEAL\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBLinear, numbus, indice4.indice, indice4.comparaciones);
+    printf("------------------------------------------------------------------------\n");
+    printf("ALGORITMO: BUSQUEDA BINARIA\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBBinaria, numbus, indice1.indice, indice1.comparaciones);
+    printf("------------------------------------------------------------------------\n");
+    printf("ALGORITMO: BUSQUEDA INDEXADA\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBIndexada, numbus, indice2.indice, indice2.comparaciones);
+    printf("------------------------------------------------------------------------\n");
+    printf("ALGORITMO: BUSQUEDA INTERPOLAR\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBInterpolar, numbus, indice3.indice, indice3.comparaciones);
     return 0;
 
 
