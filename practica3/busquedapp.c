@@ -2,18 +2,24 @@
 
 #include <time.h>
 #include <stdlib.h>
-//definicion de las funciones de los algoritmos de b�squeda
-int lSearch(int [],int,int); //lSearch(VectorD,tama�o,valor Buscado);
-void burbujaS(int [],int); //algoritmo de ordenamiento
-int binSearch(int [],int,int,int); //binSearch(vectorO,inicio,fin,vB)
-int indSearch(int[],int,int); //indSearch(VectorO,tama�o,vB);
-int intSearch(int [],int,int,int); //intSearch(vectorO,inicio,fin,vB);
-int lSearch(int A[],int n,int vB)
+//definicion de las funciones de los algoritmos de busqueda
+struct resultados{
+    int indice;
+    int comparaciones;
+};
+struct resultados lSearch(int A[],int n,int vB)
 {
-    for(int i=0;i<n;i++)
-        if(A[i]==vB)
-            return i;
-    return -1;
+    struct resultados lineal;
+    lineal.comparaciones=0;
+    for(int i=0;i<n;i++){
+        lineal.comparaciones++;
+        if(A[i]==vB){
+        lineal.comparaciones++;
+        lineal.indice=i;
+        return lineal;}
+    }
+    lineal.indice=-1;
+    return lineal;
 }
 
 void burbujaS(int A[],int n){

@@ -1,7 +1,7 @@
 #ifndef BUSQUEDAPP_H_INCLUDED
 #define BUSQUEDAPP_H_INCLUDED
 
-int lSearch(int [],int,int); //lSearch(VectorD,tama�o,valor Buscado);
+struct resultados lSearch(int [],int,int); //lSearch(VectorD,tamaño,valor Buscado);
 void burbujaS(int [],int); //algoritmo de ordenamiento
 int binSearch(int [],int,int,int); //binSearch(vectorO,inicio,fin,vB)
 int indSearch(int[],int,int); //indSearch(VectorO,tama�o,vB);

@@ -1,6 +1,14 @@
 # depslib dependency file v1.0
-1696566523 source:c:\users\lalo\documents\practicasaed\practica3\main.c
+1696651746 source:c:\users\lalo\documents\practicasaed\practica3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
+	"busquedapp.h"
+
+1696651222 source:c:\users\lalo\documents\practicasaed\practica3\busquedapp.c
+	"busquedapp.h"
+	<time.h>
+	<stdlib.h>
+
+1696651248 c:\users\lalo\documents\practicasaed\practica3\busquedapp.h
 
