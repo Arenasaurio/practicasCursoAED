@@ -128,6 +128,21 @@ struct resultados intSearch(int A[],int inicio,int fin,int vB)
     return interpolar;
 }
 
+struct resultados expSearch (int A [], int n, int vB) {
+    struct resultados exponencial;
+    exponencial.comparaciones=0;
+    int i = 1;
+    if (A [0] == vB) {
+        exponencial.indice=0;
+        return exponencial;
+    }
+    while ((i < n) && (A [i] <= vB)) {
+        i = i * 2;
+    }
+    exponencial.indice = -1;
+    return binSearch(A, i/2, pow(i, n-1), vB);
+}
+
 
 
 
