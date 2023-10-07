@@ -128,21 +128,42 @@ struct resultados intSearch(int A[],int inicio,int fin,int vB)
     return interpolar;
 }
 
-struct resultados expSearch (int A [], int n, int vB) {
-    struct resultados exponencial;
-    exponencial.comparaciones=0;
+//Busqueda agregada.
+int exponential_search(int arr[], int n, int x, int* comparisons) {
+    if (arr[0] == x) {
+        *comparisons = 1;
+        return 0;
+    }
+
     int i = 1;
-    if (A [0] == vB) {
-        exponencial.indice=0;
-        return exponencial;
+    while (i < n && arr[i] <= x) {
+        i *= 2;
+        (*comparisons)++;
     }
-    while ((i < n) && (A [i] <= vB)) {
-        i = i * 2;
-    }
-    exponencial.indice = -1;
-    return binSearch(A, i/2, pow(i, n-1), vB);
+
+    return binariasimple(arr, i / 2, (i < n) ? i : n, x, comparisons);
 }
 
+int binariasimple(int arr[], int low, int high, int x, int* comparisons) {
+    if (high >= low) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == x) {
+            (*comparisons)++;
+            return mid;
+        }
+
+        if (arr[mid] > x) {
+            (*comparisons)++;
+            return binariasimple(arr, low, mid - 1, x, comparisons);
+        }
+
+        (*comparisons)++;
+        return binariasimple(arr, mid + 1, high, x, comparisons);
+    }
+
+    return -1;
+}
 
 
 

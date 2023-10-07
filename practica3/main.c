@@ -8,9 +8,11 @@ struct resultados{
 };
 int main(void){
 
-    int n=10; //Tamanio del arreglo
+    int n=20; //Tamanio del arreglo
     int arr[n]; //Declarar el arreglo
-    int numbus=0; //Valor a buscar
+    int numbus=2; //Valor a buscar
+    //variables para exponencial
+    int comparaciones=0;
 
     printf("ESTE TRABAJO SE REALIZO EN COLABORACION DE\nARENAS CESAR\nDOMINGUEZ FRANCISCO\nNAVA DANA\nNAVA JAZMIN\nLUIS MANUEL VAZQUEZ\n");
 
@@ -57,9 +59,8 @@ int main(void){
     double tiempoBLinear = (double)(finLinearS - inicioLinearS) / CLOCKS_PER_SEC;
 
     //BUSQUEDA EXPONENCIAL
-    struct resultados indice5;
     clock_t inicioExponencialS = clock();
-    indice5 = expSearch(arr, n, numbus);
+    int indice5 = exponential_search(arr, n, numbus, &comparaciones);
     clock_t finExponencialS = clock();
     double tiempoBExponencial = (double) (finExponencialS - inicioExponencialS) / CLOCKS_PER_SEC;
 
@@ -73,7 +74,7 @@ int main(void){
     printf("------------------------------------------------------------------------\n");
     printf("ALGORITMO: BUSQUEDA INTERPOLAR\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBInterpolar, numbus, indice3.indice, indice3.comparaciones);
     printf("------------------------------------------------------------------------\n");
-    printf("ALGORITMO: BUSQUEDA EXPONENCIAL\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBExponencial, numbus, indice5.indice, indice5.comparaciones);
+    printf("ALGORITMO: BUSQUEDA EXPONENCIAL\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBExponencial, numbus, indice5, comparaciones);
     return 0;
 
 
