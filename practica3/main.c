@@ -8,9 +8,9 @@ struct resultados{
 };
 int main(void){
 
-    int n=20; //Tamanio del arreglo
+    int n=10000; //Tamanio del arreglo//5.000,10.000
     int arr[n]; //Declarar el arreglo
-    int numbus=2; //Valor a buscar
+    int numbus=50; //Valor a buscar//0,50,99,29
     //variables para exponencial
     int comparaciones=0;
 
@@ -19,7 +19,7 @@ int main(void){
     srand(time(0)); //Generacion de los numeros aleatorios con semilla en base al tiempo
 
     for (int i = 0; i < n; i++) { //Inicia el bucle guardando los numeros en un arreglo
-        arr[i] = rand() % 99; //Los numeros generados seran hasta el 99
+        arr[i] = rand() % 100; //Los numeros generados seran hasta el 99
     }
 
     burbujaS(arr,n); //Ordenamiento con burbuja
@@ -35,34 +35,34 @@ int main(void){
     clock_t inicioBinariaS = clock();
     indice1 = binSearch(arr,0,n-1,numbus);
     clock_t finBinariaS = clock();
-    double tiempoBBinaria = (double)(finBinariaS - inicioBinariaS) / CLOCKS_PER_SEC;
+    double tiempoBBinaria = (double)(finBinariaS - inicioBinariaS);
 
     //BUSQUEDA INDEXADA
     struct resultados indice2;
     clock_t inicioIndexadaS = clock();
     indice2 = indSearch(arr,n,numbus);
     clock_t finIndexadaS = clock();
-    double tiempoBIndexada = (double)(finIndexadaS - inicioIndexadaS) / CLOCKS_PER_SEC;
+    double tiempoBIndexada = (double)(finIndexadaS - inicioIndexadaS);
 
     //BUSQUEDA INTERPOLADA
     struct resultados indice3;
     clock_t inicioInterpolarS = clock();
     indice3 = intSearch(arr,0,n-1,numbus);
     clock_t finInterpolarS = clock();
-    double tiempoBInterpolar = (double)(finInterpolarS - inicioInterpolarS) / CLOCKS_PER_SEC;
+    double tiempoBInterpolar = (double)(finInterpolarS - inicioInterpolarS);
 
     //BUSQUEDA LINEAR
     struct resultados indice4;
     clock_t inicioLinearS = clock();
     indice4 = lSearch(arr,n,numbus);
     clock_t finLinearS = clock();
-    double tiempoBLinear = (double)(finLinearS - inicioLinearS) / CLOCKS_PER_SEC;
+    double tiempoBLinear = (double)(finLinearS - inicioLinearS);
 
     //BUSQUEDA EXPONENCIAL
     clock_t inicioExponencialS = clock();
     int indice5 = exponential_search(arr, n, numbus, &comparaciones);
     clock_t finExponencialS = clock();
-    double tiempoBExponencial = (double) (finExponencialS - inicioExponencialS) / CLOCKS_PER_SEC;
+    double tiempoBExponencial = (double) (finExponencialS - inicioExponencialS);
 
 
     printf("------------------------------------------------------------------------\n");
