@@ -35,14 +35,14 @@ int main(void){
     clock_t inicioBinariaS = clock();
     indice1 = binSearch(arr,0,n-1,numbus);
     clock_t finBinariaS = clock();
-    double tiempoBBinaria = (double)(finBinariaS - inicioBinariaS);
+    double tiempoBBinaria = ((double)(finBinariaS - inicioBinariaS))/CLOCKS_PER_SEC;
 
     //BUSQUEDA INDEXADA
     struct resultados indice2;
     clock_t inicioIndexadaS = clock();
     indice2 = indSearch(arr,n,numbus);
     clock_t finIndexadaS = clock();
-    double tiempoBIndexada = (double)(finIndexadaS - inicioIndexadaS);
+    int tiempoBIndexada = (finIndexadaS - inicioIndexadaS);
 
     //BUSQUEDA INTERPOLADA
     struct resultados indice3;
@@ -70,7 +70,7 @@ int main(void){
     printf("------------------------------------------------------------------------\n");
     printf("ALGORITMO: BUSQUEDA BINARIA\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBBinaria, numbus, indice1.indice, indice1.comparaciones);
     printf("------------------------------------------------------------------------\n");
-    printf("ALGORITMO: BUSQUEDA INDEXADA\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBIndexada, numbus, indice2.indice, indice2.comparaciones);
+    printf("ALGORITMO: BUSQUEDA INDEXADA\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %dsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBIndexada, numbus, indice2.indice, indice2.comparaciones);
     printf("------------------------------------------------------------------------\n");
     printf("ALGORITMO: BUSQUEDA INTERPOLAR\nANCHO DE VECTOR: %d\nTIEMPO DE EJECUCION: %flsec\nVALOR BUSCADO: %d\nINDICE DEVUELTO: %d\nNUMERO DE COMPARACIONES: %d\n", n, tiempoBInterpolar, numbus, indice3.indice, indice3.comparaciones);
     printf("------------------------------------------------------------------------\n");
