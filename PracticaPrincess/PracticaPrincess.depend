@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1697591324 source:c:\users\lalo\documents\practicasaed\practicaprincess\main.c
+	<stdio.h>
+	<stdbool.h>
+	<math.h>
+
