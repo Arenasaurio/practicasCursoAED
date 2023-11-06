@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1699163907 source:c:\users\lalo\documents\practicasaed\listasimpleenlazada\main.c
+	<stdio.h>
+	<stdlib.h>
+
