@@ -1,6 +1,6 @@
 /*Mejorar para que evalue expresiones con más de un digito
  25 300 + 2 * = 650*/
- //psdt:deje los comentarios para que vean lo pendejo que estoi ;)
+ //psdt:deje los comentarios para que vea que si le heche ganas :v
 
 
 #include <stdio.h>
