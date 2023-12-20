@@ -10,3 +10,14 @@
 
 1693753404 c:\users\lalo\documents\algoritmosyestructuras\pruebatda\tda0309\letritas\letras.h
 
+1693754224 source:c:\users\lalo\documents\practicasaed\practica1\letrotas.c
+	<ctype.h>
+	<string.h>
+	"letras.h"
+
+1693753404 c:\users\lalo\documents\practicasaed\practica1\letras.h
+
+1693802976 source:c:\users\lalo\documents\practicasaed\practica1\main.c
+	<stdio.h>
+	"letras.h"
+

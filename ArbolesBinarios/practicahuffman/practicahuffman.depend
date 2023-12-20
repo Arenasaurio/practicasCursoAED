@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1703064784 source:c:\users\lalo\documents\practicasaed\arbolesbinarios\practicahuffman\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
