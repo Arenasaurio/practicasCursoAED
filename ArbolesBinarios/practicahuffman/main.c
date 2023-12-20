@@ -3,6 +3,7 @@
 #include <string.h>
 
 #define MAX_CHAR 256
+int aux=1;
 // A Huffman tree node
 struct MinHeapNode {
     char data;
@@ -19,13 +20,27 @@ struct MinHeapNode* newNode(char data, unsigned freq) {
     return node;
 }
 
+void escribir_en_archivo(char *nombre_archivo, char *texto) {
+    FILE *archivo = fopen(nombre_archivo, "a");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo.\n");
+        return;
+    }
+    fprintf(archivo, "%s\n", texto);
+    fclose(archivo);
+}
+
 // Function to print Huffman codes from the root of Huffman Tree.
 void printCodes(struct MinHeapNode* root, char* str) {
     if (!root)
         return;
 
-    if (root->data != '$')
-        printf("%c: %s\n", root->data, str);
+    if (root->data != '$'){
+        char text[MAX_CHAR];
+        if(str[0]=='0')
+            str[0]='1';
+        sprintf(text, "%c :%s\n", root->data, str);
+        escribir_en_archivo("papa.txt",text);}
 
     char str0[100];
     strcpy(str0, str);
@@ -37,6 +52,9 @@ void printCodes(struct MinHeapNode* root, char* str) {
     strcat(str1, "1");
     printCodes(root->right, str1);
 }
+
+
+
 
 // The main function that builds a Huffman Tree and
 // print codes by traversing the built Huffman Tree
@@ -112,8 +130,34 @@ void almacenarLetras(char* str, char* letras) {
     letras[index] = '\0';
 }
 
-// Función para contar las repeticiones de cada letra en la cadena original
-void contarRepeticiones(char* str, char* letras) {
+
+
+
+
+
+// Driver program to test above functions
+int main() {
+    FILE *file = fopen("Frase.txt", "r");  // Abre el archivo en modo de lectura
+    if (file == NULL) {
+        printf("No se pudo abrir el archivo\n");
+        return 1;
+    }
+
+    char str[100];  // Asegúrate de que la cadena sea lo suficientemente grande
+    if (fgets(str, sizeof(str), file) != NULL) {
+        printf("La línea leída del archivo es: %s\n", str);
+    } else {
+        printf("No se pudo leer la línea del archivo\n");
+    }
+
+    fclose(file);  // Cierra el archivo
+
+    char letras[MAX_CHAR];
+
+    almacenarLetras(str, letras);
+
+    char arr[] = {'r','s','l','o'};
+    int freq[MAX_CHAR];
     int count[MAX_CHAR] = {0};
 
     for (int i = 0; str[i] != '\0'; i++) {
@@ -140,39 +184,13 @@ void contarRepeticiones(char* str, char* letras) {
         if(letras[i]=='\n')
             continue;
         printf("%c: %d\n", letras[i], count[letras[i]]);
-    }
-}
-
-
-
-// Driver program to test above functions
-int main() {
-    char arr[] = {'r','s','l','o'};
-    int freq[] = {1,1,2,3};
-
-    int size = sizeof(arr) / sizeof(arr[0]);
-
-    HuffmanCodes(arr, freq, size);
-
-    FILE *file = fopen("Frase.txt", "r");  // Abre el archivo en modo de lectura
-    if (file == NULL) {
-        printf("No se pudo abrir el archivo\n");
-        return 1;
+        freq[i]=count[letras[i]];
+        aux=i;
     }
 
-    char str[100];  // Asegúrate de que la cadena sea lo suficientemente grande
-    if (fgets(str, sizeof(str), file) != NULL) {
-        printf("La línea leída del archivo es: %s\n", str);
-    } else {
-        printf("No se pudo leer la línea del archivo\n");
-    }
+    int size = (aux+1) / sizeof(letras[1]);
 
-    fclose(file);  // Cierra el archivo
-
-    char letras[MAX_CHAR];
-
-    almacenarLetras(str, letras);
-    contarRepeticiones(str, letras);
+    HuffmanCodes(letras, freq, size);
 
 
 
